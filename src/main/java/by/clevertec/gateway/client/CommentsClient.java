@@ -44,7 +44,7 @@ public interface CommentsClient {
     @GetMapping("/comments/news/{newsId}")
     ResponseEntity<Page<CommentResponseDto>> getCommentsByNewsId(@PathVariable Long newsId, Pageable pageable);
 
-
 }
+
 
 
