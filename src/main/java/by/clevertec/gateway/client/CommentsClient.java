@@ -36,14 +36,6 @@ public interface CommentsClient {
     @GetMapping("/comments")
     ResponseEntity<Page<CommentResponseDto>> getAllComment(Pageable pageable);
 
-
-    @DeleteMapping("/comments/news/{newsId}")
-    ResponseEntity<Void> deleteCommentsByNewsId(@PathVariable Long newsId);
-
-
-    @GetMapping("/comments/news/{newsId}")
-    ResponseEntity<Page<CommentResponseDto>> getCommentsByNewsId(@PathVariable Long newsId, Pageable pageable);
-
 }
 
 
