@@ -9,9 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @AllArgsConstructor
-@ToString
 @NoArgsConstructor
 public class CommentListResponseDto implements Serializable {
 
