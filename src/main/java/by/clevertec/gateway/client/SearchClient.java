@@ -16,7 +16,7 @@ public interface SearchClient {
     ResponseEntity<Page<NewsResponseDto>> searchNews(@RequestParam String text, Pageable pageable);
 
     @GetMapping("/search/comments")
-    ResponseEntity<Page<CommentResponseDto>> _searchComments(@RequestParam String text, Pageable pageable);
+    ResponseEntity<Page<CommentResponseDto>> searchComments(@RequestParam String text, Pageable pageable);
 }
 
 
