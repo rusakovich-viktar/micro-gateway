@@ -2,6 +2,7 @@ package by.clevertec.gateway.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,8 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
+@EqualsAndHashCode
+
 public class NewsRequestDto implements Serializable {
 
     @NotBlank(message = "Title cannot be blank")
