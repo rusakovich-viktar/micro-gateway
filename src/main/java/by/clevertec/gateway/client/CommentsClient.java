@@ -1,7 +1,13 @@
 package by.clevertec.gateway.client;
 
+import static by.clevertec.gateway.util.Constant.BaseApi.COMMENTS;
+import static by.clevertec.gateway.util.Constant.BaseApi.COMMENTS_ID;
+import static by.clevertec.gateway.util.Constant.BaseApi.COMMENTS_NEWS_NEWS_ID;
+import static by.clevertec.gateway.util.Constant.BaseApi.HTTP_LOCALHOST_8082;
+
 import by.clevertec.gateway.dto.request.CommentRequestDto;
 import by.clevertec.gateway.dto.response.CommentResponseDto;
+
 import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Page;
@@ -14,29 +20,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "micro-comments", url = "http://localhost:8082")
+@FeignClient(name = "micro-comments", url = "${comments-service.url}")
 public interface CommentsClient {
 
-    @PostMapping("/comments/news/{newsId}")
+    @PostMapping(COMMENTS_NEWS_NEWS_ID)
     ResponseEntity<CommentResponseDto> createComment(@PathVariable Long newsId,
                                                      @Valid @RequestBody CommentRequestDto commentRequestDto);
 
-    @GetMapping("/comments/{id}")
+    @GetMapping(COMMENTS_ID)
     ResponseEntity<CommentResponseDto> getCommentById(@PathVariable Long id);
 
-
-    @PutMapping("/comments/{id}")
+    @PutMapping(COMMENTS_ID)
     ResponseEntity<CommentResponseDto> updateComment(@PathVariable Long id,
                                                      @Valid @RequestBody CommentRequestDto commentRequestDto);
 
-    @DeleteMapping("/comments/{id}")
+    @DeleteMapping(COMMENTS_ID)
     ResponseEntity<Void> deleteComment(@PathVariable Long id);
 
-
-    @GetMapping("/comments")
+    @GetMapping(COMMENTS)
     ResponseEntity<Page<CommentResponseDto>> getAllComment(Pageable pageable);
 
 }
-
-
-

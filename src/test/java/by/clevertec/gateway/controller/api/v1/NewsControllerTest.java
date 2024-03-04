@@ -39,7 +39,6 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(NewsController.class)
 class NewsControllerTest {
 
-
     private final MockMvc mockMvc;
 
     private final ObjectMapper objectMapper;

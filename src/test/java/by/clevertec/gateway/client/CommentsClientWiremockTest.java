@@ -1,6 +1,5 @@
 package by.clevertec.gateway.client;
 
-
 import static by.clevertec.gateway.util.TestConstant.ID_ONE;
 import static by.clevertec.gateway.util.TestConstant.Path.COMMENTS;
 import static by.clevertec.gateway.util.TestConstant.Path.COMMENTS_NEWS;
@@ -41,7 +40,6 @@ import org.springframework.http.ResponseEntity;
 @RequiredArgsConstructor
 @WireMockTest(httpPort = 8082)
 class CommentsClientWiremockTest {
-
 
     private final CommentsClient commentsClient;
 

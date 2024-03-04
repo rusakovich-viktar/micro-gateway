@@ -1,19 +1,10 @@
 spring:
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: micro-news
-            uri: http://localhost:8081
-            predicates:
-              - Path=/news/**
-          - id: micro-comments
-            uri: http://localhost:8082
-            predicates:
-              - Path=/comments/**
-          - id: micro-search
-            uri: http://localhost:8083
-            predicates:
-              - Path=/search/**
+  profiles:
+    default: dev
+
+    active: prod
+
+  application:
+    name: micro-gateway
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
