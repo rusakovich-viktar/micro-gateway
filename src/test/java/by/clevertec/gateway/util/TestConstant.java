@@ -12,7 +12,6 @@ public class TestConstant {
     public static final String NEWS_TEXT = "Тут должно быть много слов по тексту новости";
     public static final String USERNAME = "Username";
 
-
     @UtilityClass
     public class Attributes {
 
@@ -23,6 +22,7 @@ public class TestConstant {
 
     @UtilityClass
     public class Path {
+
         public static final String NEWS = "/news";
         public static final String NEWS1 = "/news/";
         public static final String NEWS_SIZE_5_PAGE_0 = "/news?size=5&page=0";
@@ -42,6 +42,4 @@ public class TestConstant {
         public static final String API_V_1_NEWS_NEWS_ID_COMMENTS = "/api/v1/news/{newsId}/comments";
     }
 
-
 }
-

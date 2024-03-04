@@ -32,9 +32,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(SearchController.class)
 class SearchControllerTest {
 
-
     private final MockMvc mockMvc;
-
 
     @MockBean
     private SearchClient searchClient;
@@ -44,7 +42,6 @@ class SearchControllerTest {
         NewsResponseDto newsResponseDto = DataTestBuilder.builder()
                 .build()
                 .buildNewsResponseDto();
-
 
         List<NewsResponseDto> newsResponseDtoList = new ArrayList<>();
         newsResponseDtoList.add(newsResponseDto);

@@ -22,7 +22,6 @@ import by.clevertec.gateway.dto.response.CommentListResponseDto;
 import by.clevertec.gateway.dto.response.CommentResponseDto;
 import by.clevertec.gateway.dto.response.NewsResponseDto;
 import by.clevertec.gateway.util.DataTestBuilder;
-import by.clevertec.gateway.util.TestConstant;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -44,7 +43,6 @@ import org.springframework.http.ResponseEntity;
 @RequiredArgsConstructor
 @WireMockTest(httpPort = 8081)
 class NewsClientWiremockTest {
-
 
     private final NewsClient newsClient;
 
@@ -68,7 +66,6 @@ class NewsClientWiremockTest {
                 .build()
                 .buildNewsResponseDto();
 
-
         stubFor(post(urlEqualTo(NEWS))
                 .withRequestBody(equalToJson(objectMapper.writeValueAsString(newsRequestDto)))
                 .willReturn(aResponse()
@@ -86,7 +83,6 @@ class NewsClientWiremockTest {
         NewsResponseDto newsResponseDto = DataTestBuilder.builder()
                 .build()
                 .buildNewsResponseDto();
-
 
         stubFor(get(urlEqualTo(NEWS1 + id))
                 .willReturn(aResponse()
@@ -108,7 +104,6 @@ class NewsClientWiremockTest {
         NewsResponseDto newsResponseDto = DataTestBuilder.builder()
                 .build()
                 .buildNewsResponseDto();
-
 
         stubFor(put(urlEqualTo(NEWS1 + id))
                 .withRequestBody(equalToJson(objectMapper.writeValueAsString(newsRequestDto)))
@@ -136,7 +131,6 @@ class NewsClientWiremockTest {
 
         Page<NewsResponseDto> newsPage = new PageImpl<>(newsList, pageable, newsList.size());
 
-
         stubFor(get(urlEqualTo(NEWS_SIZE_5_PAGE_0))
                 .willReturn(aResponse()
                         .withStatus(200)
@@ -163,7 +157,6 @@ class NewsClientWiremockTest {
 
         CommentListResponseDto commentListResponseDto = new CommentListResponseDto(commentList);
 
-
         stubFor(get(urlEqualTo(NEWS1 + newsId + COMMENTS_SIZE_5_PAGE_0))
                 .willReturn(aResponse()
                         .withStatus(200)
@@ -184,6 +177,5 @@ class NewsClientWiremockTest {
         ResponseEntity<Void> responseEntity = newsClient.deleteNews(id);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
-
 
 }

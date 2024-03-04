@@ -3,6 +3,7 @@ package by.clevertec.gateway.client;
 import by.clevertec.gateway.dto.request.NewsRequestDto;
 import by.clevertec.gateway.dto.response.CommentListResponseDto;
 import by.clevertec.gateway.dto.response.NewsResponseDto;
+import by.clevertec.gateway.util.Constant.BaseApi;
 import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Page;
@@ -15,33 +16,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "micro-news", url = "http://localhost:8081")
+@FeignClient(name = "micro-news", url = "${news-service.url}")
 public interface NewsClient {
 
-    @PostMapping("/news")
+    @PostMapping(BaseApi.NEWS)
     ResponseEntity<NewsResponseDto> createNews(@Valid @RequestBody NewsRequestDto newsRequestDto);
 
-
-    @GetMapping("/news/{id}")
+    @GetMapping(BaseApi.NEWS_ID)
     ResponseEntity<NewsResponseDto> getNewsById(@PathVariable Long id);
 
-
-    @PutMapping("/news/{id}")
+    @PutMapping(BaseApi.NEWS_ID)
     ResponseEntity<NewsResponseDto> updateNews(@PathVariable Long id,
                                                @Valid @RequestBody NewsRequestDto newsRequestDto);
 
-
-    @DeleteMapping("/news/{id}")
+    @DeleteMapping(BaseApi.NEWS_ID)
     ResponseEntity<Void> deleteNews(@PathVariable Long id);
 
-
-    @GetMapping("/news")
+    @GetMapping(BaseApi.NEWS)
     ResponseEntity<Page<NewsResponseDto>> getAllNews(Pageable pageable);
 
-
-    @GetMapping("/news/{newsId}/comments")
+    @GetMapping(BaseApi.NEWS_NEWS_ID_COMMENTS)
     ResponseEntity<CommentListResponseDto> getCommentsByNewsId(@PathVariable Long newsId,
                                                                Pageable pageable);
 }
-
-

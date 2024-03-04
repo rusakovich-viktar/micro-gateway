@@ -1,9 +1,9 @@
 package by.clevertec.gateway.controller.api.v1;
 
-import static com.github.tomakehurst.wiremock.common.ContentTypes.APPLICATION_JSON;
 import static by.clevertec.gateway.util.TestConstant.Path.API_V_1_COMMENTS;
 import static by.clevertec.gateway.util.TestConstant.Path.API_V_1_COMMENTS_ID;
 import static by.clevertec.gateway.util.TestConstant.Path.API_V_1_COMMENTS_NEWS_NEWS_ID;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.APPLICATION_JSON;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -135,5 +135,3 @@ public class CommentControllerTest {
     }
 
 }
-
-

@@ -2,28 +2,19 @@ package by.clevertec.gateway.client;
 
 import static by.clevertec.gateway.util.TestConstant.Attributes.TEST;
 import static by.clevertec.gateway.util.TestConstant.Path.SEARCH_COMMENTS_TEXT;
-import static com.github.tomakehurst.wiremock.common.ContentTypes.APPLICATION_JSON;
-import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static by.clevertec.gateway.util.TestConstant.Path.SEARCH_NEWS_TEXT;
 import static by.clevertec.gateway.util.TestConstant.Path.SIZE_5_PAGE_0;
-import static org.junit.jupiter.api.Assertions.*;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.delete;
-import static com.github.tomakehurst.wiremock.client.WireMock.equalToJson;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
-import static com.github.tomakehurst.wiremock.client.WireMock.post;
-import static com.github.tomakehurst.wiremock.client.WireMock.put;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.APPLICATION_JSON;
+import static com.github.tomakehurst.wiremock.common.ContentTypes.CONTENT_TYPE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import by.clevertec.gateway.dto.request.NewsRequestDto;
-import by.clevertec.gateway.dto.response.CommentListResponseDto;
 import by.clevertec.gateway.dto.response.CommentResponseDto;
 import by.clevertec.gateway.dto.response.NewsResponseDto;
 import by.clevertec.gateway.util.DataTestBuilder;
-import by.clevertec.gateway.util.TestConstant;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -46,16 +37,15 @@ import org.springframework.http.ResponseEntity;
 @WireMockTest(httpPort = 8083)
 class SearchClientWiremockTest {
 
-
     private final SearchClient searchClient;
     private ObjectMapper objectMapper;
-
 
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
     }
+
     @Test
     public void testSearchNews() throws JsonProcessingException {
         String text = TEST;
