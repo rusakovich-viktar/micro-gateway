@@ -3,11 +3,9 @@ package by.clevertec.gateway.client;
 import static by.clevertec.gateway.util.Constant.BaseApi.COMMENTS;
 import static by.clevertec.gateway.util.Constant.BaseApi.COMMENTS_ID;
 import static by.clevertec.gateway.util.Constant.BaseApi.COMMENTS_NEWS_NEWS_ID;
-import static by.clevertec.gateway.util.Constant.BaseApi.HTTP_LOCALHOST_8082;
 
 import by.clevertec.gateway.dto.request.CommentRequestDto;
 import by.clevertec.gateway.dto.response.CommentResponseDto;
-
 import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.domain.Page;
