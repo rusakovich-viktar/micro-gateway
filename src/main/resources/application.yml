@@ -2,9 +2,14 @@ spring:
   profiles:
     default: dev
 
-    active: prod
+#    active: prod
 
   application:
     name: micro-gateway
   autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+micro-gateway:
+  openapi:
+    dev-url: http://localhost:8080
+    prod-url: micro-gateway:8080

@@ -9,9 +9,6 @@ public class Constant {
     public class BaseApi {
 
         public static final String API_V_1 = "/api/v1";
-        public static final String HTTP_LOCALHOST_8081 = "http://localhost:8081";
-        public static final String HTTP_LOCALHOST_8082 = "http://localhost:8082";
-        public static final String HTTP_LOCALHOST_8083 = "http://localhost:8083";
         public static final String COMMENTS = "/comments";
         public static final String COMMENTS_ID = "/comments/{id}";
         public static final String COMMENTS_SEARCH = "/comments/search";
