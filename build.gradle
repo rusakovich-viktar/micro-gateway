@@ -33,6 +33,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
     implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config:4.1.0'
 
     testImplementation 'org.wiremock:wiremock-standalone:3.4.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
