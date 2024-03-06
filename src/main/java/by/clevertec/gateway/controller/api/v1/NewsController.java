@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Контроллер для работы с новостями.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(API_V_1)
@@ -30,33 +33,71 @@ public class NewsController {
 
     private final NewsClient newsClient;
 
+    /**
+     * Создает новость.
+     *
+     * @param newsRequestDto DTO запроса на создание новости
+     * @return созданная новость
+     */
     @PostMapping(NEWS)
     ResponseEntity<NewsResponseDto> createNews(@Valid @RequestBody NewsRequestDto newsRequestDto) {
         return newsClient.createNews(newsRequestDto);
     }
 
+    /**
+     * Получает новость по идентификатору.
+     *
+     * @param id идентификатор новости
+     * @return новость
+     */
     @GetMapping(NEWS_ID)
     ResponseEntity<NewsResponseDto> getNewsById(@PathVariable Long id) {
         return newsClient.getNewsById(id);
     }
 
+    /**
+     * Обновляет новость.
+     *
+     * @param id             идентификатор новости
+     * @param newsRequestDto DTO запроса на обновление новости
+     * @return обновленная новость
+     */
     @PutMapping(NEWS_ID)
     ResponseEntity<NewsResponseDto> updateNews(@PathVariable Long id,
                                                @Valid @RequestBody NewsRequestDto newsRequestDto) {
         return newsClient.updateNews(id, newsRequestDto);
     }
 
+    /**
+     * Удаляет новость.
+     *
+     * @param id идентификатор новости
+     * @return HTTP статус 204 (No Content), если новость успешно удалена
+     */
     @DeleteMapping(NEWS_ID)
     ResponseEntity<Void> deleteNews(@PathVariable Long id) {
         newsClient.deleteNews(id);
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Получает все новости.
+     *
+     * @param pageable параметры пагинации
+     * @return страница с новостями
+     */
     @GetMapping(NEWS)
     ResponseEntity<Page<NewsResponseDto>> getAllNews(Pageable pageable) {
         return newsClient.getAllNews(pageable);
     }
 
+    /**
+     * Получает все комментарии к новости.
+     *
+     * @param newsId   идентификатор новости
+     * @param pageable параметры пагинации
+     * @return страница с комментариями к новости
+     */
     @GetMapping(NEWS_NEWS_ID_COMMENTS)
     ResponseEntity<CommentListResponseDto> getCommentsByNewsId(@PathVariable Long newsId,
                                                                Pageable pageable) {

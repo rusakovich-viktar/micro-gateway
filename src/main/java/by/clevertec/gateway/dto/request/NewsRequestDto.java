@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Data Transfer Object (DTO) для создания или обновления новостей.
+ */
 @Getter
 @Setter
 @ToString
