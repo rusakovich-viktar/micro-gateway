@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * Класс для передачи данных о списке комментариев.
+ */
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
