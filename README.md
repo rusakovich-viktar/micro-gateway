@@ -11,11 +11,11 @@
 - Общий порт `8080`
 - Для всех трех микросервисов - новости, комментарии, поиск
 
-### Стек технологий, примененный в micro-comments
+### Стек технологий, примененный в micro-gateway
 
-	Использованы Spring Boot 3.2.3, Java 17, Gradle 8.5 и PostgreSQL 15.1; 
-    Spring Data JPA, Hibernate validator, Spring Web, liquibase, mapstruct, redis, spring-cloud-openFeign, spring-cloud-gateway, spring-cloud-config-server, lombok
-    Для тестирования использованы junit5, Mockito, Wiremock
+- Использованы Spring Boot 3.2.3, Java 17, Gradle 8.5 и PostgreSQL 15.1; 
+- Spring Data JPA, Hibernate validator, Spring Web, liquibase, mapstruct, redis, spring-cloud-openFeign, spring-cloud-gateway, spring-cloud-config-server, lombok
+- Для тестирования использованы junit5, Mockito, Wiremock
 
 ### Реализация. Общие пояснения к деталям
 
@@ -28,11 +28,11 @@
 
 ### Реализованы и подключены два Spring Boot Starter:
 
-```
+
 - logger-aspect-starter реализует логирование запрос-ответ в аспектном стиле (для слоя Controlles)
 - exception-handler-starter реализует глобальную обработку исключений и интерпретацию их согласно REST.
-Стартеры при сборке загружаются первыми, далее из локального репозитория .m2 как зависимости подключаются к другим микросервисам.
-```
+- Стартеры при сборке загружаются первыми, далее из локального репозитория .m2 как зависимости подключаются к другим микросервисам.
+
 
 ### Документация swagger доступна по пути `/api`
 
@@ -52,19 +52,19 @@
 
 ### Использован Docker, написан DockerFile
 
-```
+
 Написаны Dockerfile – для каждого spring boot приложения, создан общий docker-compose.yml для поднятия всех сервисов в контейнерах, настроено взаимодействие между ними)
-```
+
 ### Реализована поддержка @Profile prod и dev. Конфиги вынесены в Spring Cloud Config:
-```
+
 - В контексте приложения условно будем считать что профиль prod будет применяться для запуска и взаимодействия микосервисов в docker сети.
 Для локальной разработки, а также для тестирования будем использовать профиль dev.
 - Профили конфигурируются через micro-config-server-cloud, поэтому он должен быть запущен или в контейнере для профиля prod или локально для профиля dev.
 - Для смены профиля dev(локально и тесты) и prod(в докере) необходимо в папка проекта в application.yml сменить активный профиль на 
-profiles: active: dev 
-или 
-profiles: active: prod
-```
+  - **profiles: active: dev** 
+    - или 
+  - **profiles: active: prod**
+
 # Как запустить приложение
 
 Является частью сервиса по управлению новостями, запускать совместно с прочими микросервисами по инструкции
