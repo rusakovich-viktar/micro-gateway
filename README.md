@@ -11,7 +11,7 @@
 - Общий порт `8080`
 - Для всех трех микросервисов - новости, комментарии, поиск
 
-### Стек технологий, примененный в micro-comments
+### Стек технологий, примененный в micro-gateway
 
 	Использованы Spring Boot 3.2.3, Java 17, Gradle 8.5 и PostgreSQL 15.1; 
     Spring Data JPA, Hibernate validator, Spring Web, liquibase, mapstruct, redis, spring-cloud-openFeign, spring-cloud-gateway, spring-cloud-config-server, lombok
